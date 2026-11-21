@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -14,12 +16,40 @@ android {
         versionCode = 201
         versionName = "2.0.1"
     }
+    val localProperties = Properties()
+    val localPropsFile = rootProject.file("local.properties")
+    if (localPropsFile.exists()) {
+        localPropsFile.inputStream().use { stream ->
+            localProperties.load(stream)
+        }
+    }
+
+    val releaseStoreFilePath = (project.findProperty("MYAPP_RELEASE_STORE_FILE") as? String)
+        ?: localProperties.getProperty("MYAPP_RELEASE_STORE_FILE")
+    val releaseStorePassword = (project.findProperty("MYAPP_RELEASE_STORE_PASSWORD") as? String)
+        ?: localProperties.getProperty("MYAPP_RELEASE_STORE_PASSWORD")
+    val releaseKeyAlias = (project.findProperty("MYAPP_RELEASE_KEY_ALIAS") as? String)
+        ?: localProperties.getProperty("MYAPP_RELEASE_KEY_ALIAS")
+    val releaseKeyPassword = (project.findProperty("MYAPP_RELEASE_KEY_PASSWORD") as? String)
+        ?: localProperties.getProperty("MYAPP_RELEASE_KEY_PASSWORD")
+
     signingConfigs {
         create("release") {
-            storeFile = file("antigravity.keystore")
-            storePassword = "antigravity_android_key"
-            keyAlias = "antigravity"
-            keyPassword = "antigravity_android_key"
+            val customStoreFile = releaseStoreFilePath?.let { path ->
+                val f = file(path)
+                if (f.exists()) f else rootProject.file(path)
+            }
+            if (customStoreFile != null && customStoreFile.exists() && !releaseKeyAlias.isNullOrBlank()) {
+                storeFile = customStoreFile
+                storePassword = releaseStorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+            } else {
+                storeFile = file("antigravity.keystore")
+                storePassword = "antigravity_android_key"
+                keyAlias = "antigravity"
+                keyPassword = "antigravity_android_key"
+            }
         }
     }
     buildTypes {
