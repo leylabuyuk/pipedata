@@ -27,6 +27,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -232,7 +234,7 @@ private fun PipeApp(catalog: PipeCatalog) {
             val items = listOf(
                 Triple(ui("Boru"), Icons.Default.Tune, 0),
                 Triple(ui("SCH Bul"), Icons.Default.Search, 1),
-                Triple(ui("Tablo"), Icons.Default.MenuBook, 2),
+                Triple(ui("Tablo"), Icons.AutoMirrored.Filled.MenuBook, 2),
                 Triple("Araçlar", Icons.Default.Build, 3),
                 Triple(ui("Ayarlar"), Icons.Default.Settings, 4)
             )
@@ -326,7 +328,7 @@ private fun DegreeMarkingPage(pipe: PipeSpec?, imperial: Boolean,
         horizontalAlignment = Alignment.CenterHorizontally) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Araçlar listesine dön",
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Araçlar listesine dön",
                     tint = Gold)
             }
             Text("Derece", color = White, fontSize = 19.sp,
