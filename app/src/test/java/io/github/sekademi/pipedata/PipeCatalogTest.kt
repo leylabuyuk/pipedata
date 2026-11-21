@@ -1,4 +1,4 @@
-package com.avenox.pipedata
+package io.github.sekademi.pipedata
 
 import java.io.File
 import java.io.StringReader

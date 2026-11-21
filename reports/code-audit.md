@@ -17,7 +17,7 @@
 | BZ-A04 | Medium | Test boşluğu doğrulandı | `tools/verify_pipe_data.py:10,52-106`, `build_apk.yml:29-41` | Testler gerçek Compose etkileşimini, cihazı ve debug derlemesini doğrulamıyor |
 | BZ-A05 | Low | Davranış riski; cihazda doğrulanmadı | `MainActivity.kt:742-752` | SCH Bul standard parametresini kullanmıyor; iki standardı birden eşliyor |
 
-> `MainActivity.kt` yolları: `app/src/main/java/com/avenox/pipedata/MainActivity.kt`. Kaynakta doğrulama, Android üzerinde yeniden üretimin yapıldığı anlamına gelmez.
+> `MainActivity.kt` yolları: `app/src/main/java/io/github/sekademi/pipedata/MainActivity.kt`. Kaynakta doğrulama, Android üzerinde yeniden üretimin yapıldığı anlamına gelmez.
 
 ## Bulgular ve kanıt
 

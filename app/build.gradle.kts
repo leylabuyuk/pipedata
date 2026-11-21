@@ -7,10 +7,10 @@ plugins {
 }
 
 android {
-    namespace = "com.avenox.pipedata"
+    namespace = "io.github.sekademi.pipedata"
     compileSdk = 35
     defaultConfig {
-        applicationId = "com.avenox.pipedata"
+        applicationId = "io.github.sekademi.pipedata"
         minSdk = 24
         targetSdk = 35
         versionCode = 201

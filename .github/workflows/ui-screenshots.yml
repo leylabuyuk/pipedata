@@ -6,8 +6,8 @@ on:
     branches: [main, 'audit/boruzi-android-screenshots-*']
     paths:
       - '.github/workflows/ui-screenshots.yml'
-      - 'app/src/main/java/com/avenox/pipedata/MainActivity.kt'
-      - 'app/src/main/java/com/avenox/pipedata/UiLanguage.kt'
+      - 'app/src/main/java/io/github/sekademi/pipedata/MainActivity.kt'
+      - 'app/src/main/java/io/github/sekademi/pipedata/UiLanguage.kt'
       - 'tools/verify_pipe_data.py'
   workflow_dispatch:
     inputs:
@@ -58,7 +58,7 @@ jobs:
           root = Path(os.environ["GITHUB_WORKSPACE"]) / "ui-screenshots"
           root.mkdir(exist_ok=True)
           apk = "app/build/outputs/apk/debug/app-debug.apk"
-          pkg = "com.avenox.pipedata"
+          pkg = "io.github.sekademi.pipedata"
           passed, problems, warnings = [], [], []
 
           def adb(*args, timeout=25):

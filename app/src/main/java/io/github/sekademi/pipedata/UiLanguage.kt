@@ -1,4 +1,4 @@
-package com.avenox.pipedata
+package io.github.sekademi.pipedata
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf

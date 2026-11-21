@@ -1,6 +1,6 @@
 @file:OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
 
-package com.avenox.pipedata
+package io.github.sekademi.pipedata
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -135,7 +135,7 @@ OD_IN = {
 }
 for row in rows:
     assert Decimal(row["outer_diameter_in"]) == Decimal(OD_IN[row["nps"]]), row
-kotlin = (ROOT / "app/src/main/java/com/avenox/pipedata/PipeCatalog.kt").read_text()
+kotlin = (ROOT / "app/src/main/java/io/github/sekademi/pipedata/PipeCatalog.kt").read_text()
 assert "lines.forEachIndexed { lineNo, raw ->" in kotlin
 assert "lines.firstOrNull()" not in kotlin, "Single-pass CSV reader only: a second traversal breaks at runtime"
 assert "lines.drop(1)" not in kotlin
@@ -143,7 +143,7 @@ assert "val wallInches: Double" in kotlin
 assert "val odMm: Double get() = odInches * 25.4" in kotlin
 assert "val wallMm: Double get() = wallInches * 25.4" in kotlin
 assert "val idMm: Double get() = idInches * 25.4" in kotlin
-screen = (ROOT / "app/src/main/java/com/avenox/pipedata/MainActivity.kt").read_text()
+screen = (ROOT / "app/src/main/java/io/github/sekademi/pipedata/MainActivity.kt").read_text()
 assert "private fun compactDimension(value: Double, imperial: Boolean)" in screen
 assert "compactDimension(t, imperial)" in screen
 assert "onDimensionSelected(1)" in screen and "it.idMm / it.odMm" in screen
